@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Counter App'),
+        title: Text('AntonX Counter App'),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
