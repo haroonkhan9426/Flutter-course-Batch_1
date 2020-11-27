@@ -1,6 +1,11 @@
+import 'package:antonx_museum/core/models/museum.dart';
 import 'package:flutter/material.dart';
 
 class MuseumTile extends StatelessWidget {
+  final Museum museum;
+
+  MuseumTile(this.museum);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +29,7 @@ class MuseumTile extends StatelessWidget {
           /// Row of Name text and bookmark
           Row(
             children: [
-              Flexible(child: Text('Peshawar Museum Peshawar city')),
+              Flexible(child: Text(museum.title)),
               SizedBox(width: 5),
               Icon(Icons.bookmark_border),
             ],
@@ -35,7 +40,7 @@ class MuseumTile extends StatelessWidget {
             children: [
               Icon(Icons.pin_drop),
               SizedBox(width: 5),
-              Flexible(child: Text('Jail road Peshawar')),
+              Flexible(child: Text(museum.address)),
             ],
           )
         ],
