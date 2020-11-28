@@ -1,0 +1,54 @@
+
+
+void main() async{
+  List<String> list = ['Str1','Str2','Str1','Str4','Str2'];
+  final keyword = 'Str2';
+  
+  List<Name> names = [];
+  
+  // Mapping
+//   names = list.map((str) => Name(first: str)).toList();
+  
+//   list.forEach((str){
+//     names.add(Name(first: str));
+//   });
+  
+  // Filtering list
+//   final filteredList = list.where((str) => str == keyword).toList();
+  
+  
+  
+  
+  // Searching in list
+//   if(list.contains(keyword)){
+//     print('Yes $keyword is present');
+//   }else{
+//     print('No $keyword is not present');
+//   }
+  
+  
+  // List iteration
+  names.forEach((name){
+     print('First: ${name.first}');
+  });
+  
+//   for(int i = 0; i < strings.length; i++){
+//     print(strings[i]);
+//   }
+}
+
+class Name{
+  String first;
+  String last;
+  
+  Name({this.first, this.last});
+}
+
+
+
+
+
+
+
+
+
