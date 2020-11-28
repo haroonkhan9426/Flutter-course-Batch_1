@@ -16,12 +16,23 @@ class _HomeScreenState extends State<HomeScreen> {
   final _dbService = DatabaseService();
   List<Museum> museums = [];
   List<Exhibition> exhibitions = [];
+  bool gotMuseumData = false;
+  bool gotExhibitionData = false;
 
   @override
   void initState() {
-    museums = _dbService.getMuseums();
-    exhibitions = _dbService.getExhibitions();
+    _getData();
     super.initState();
+  }
+
+  _getData() async {
+    museums = await _dbService.getMuseums();
+    gotMuseumData = true;
+    setState(() {});
+
+    exhibitions = await _dbService.getExhibitions();
+    gotExhibitionData = true;
+    setState(() {});
   }
 
   @override
@@ -78,27 +89,36 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 50),
 
                   /// Horizontal list view of visited
-                  Container(
-                    height: 200,
+                  !gotMuseumData
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Container(
+                          height: 200,
 
-                    /// Default ListView
-                    child: ListView(
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: museums.map((m) => MuseumTile(m)).toList(),
-                    ),
-                  ),
+                          /// Default ListView
+                          child: ListView(
+                            primary: false,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            children:
+                                museums.map((m) => MuseumTile(m)).toList(),
+                          ),
+                        ),
 
                   SizedBox(height: 40),
 
                   /// Vertical list view of news & exhibitions
-                  ListView.builder(
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: exhibitions.length,
-                      itemBuilder: (context, index) =>
-                          ExhibitionTile(exhibitions[index])),
+                  !gotExhibitionData
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView.builder(
+                          primary: false,
+                          shrinkWrap: true,
+                          itemCount: exhibitions.length,
+                          itemBuilder: (context, index) =>
+                              ExhibitionTile(exhibitions[index])),
                 ],
               ),
             ),
