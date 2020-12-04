@@ -6,6 +6,7 @@ import 'package:antonx_museum/ui/custom_widgets/museum_tile.dart';
 import 'package:flutter/material.dart';
 
 import '../custom_widgets/museum_tile.dart';
+import 'add_museum_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,9 +19,35 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Exhibition> exhibitions = [];
   bool gotMuseumData = false;
   bool gotExhibitionData = false;
+  Map<String, dynamic> json = {
+    "name": "Haroon Khan",
+    "class": "O-level",
+    "address": {
+      "house_no": "20",
+      "street": "Sheikh street",
+      "city": "Peshawar",
+      "test": {
+        "test_nested": "this is test",
+      },
+    },
+    "scores": [
+      {"Subject": "math", "marks": "20"},
+      {"Subject": "english", "marks": "30"}
+    ]
+  };
+
+  String name;
+  String house;
+  String test;
 
   @override
   void initState() {
+    name = json['name'];
+    house = json['address']['house_no'];
+    test = json['address']['test']['test_nested'];
+    print('Name: $name');
+    print('House#: $house');
+    print('test: $test');
     _getData();
     super.initState();
   }
@@ -38,6 +65,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddMuseumScreen()));
+          },
+        ),
         backgroundColor: Colors.grey[100],
         body: SafeArea(
           child: SingleChildScrollView(

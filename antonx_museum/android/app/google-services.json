@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "783186905256",
+    "project_id": "antonx-museum",
+    "storage_bucket": "antonx-museum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783186905256:android:d5b9d07f123ecf0aff1a9d",
+        "android_client_info": {
+          "package_name": "com.example.antonx_museum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783186905256-ihabpp854cusc7fd3ddhlten84col85v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_5G00TggDxdxR4ShL1RrBgF0Iuc5XJa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783186905256-ihabpp854cusc7fd3ddhlten84col85v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
