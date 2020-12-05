@@ -10,9 +10,6 @@ class DatabaseService {
     final snapshot = await _fireStoreRef.collection('museums').get();
     if (snapshot.size > 0) {
       print('Docs returned from Database: ${snapshot.docs.length}');
-//      for (int i = 0; i < snapshot.docs.length; i++) {
-//        museums.add(Museum.fromJson(snapshot.docs[i]));
-//      }
       snapshot.docs.forEach((doc) {
         museums.add(Museum.fromJson(doc));
       });
@@ -32,7 +29,7 @@ class DatabaseService {
     return exhibitions;
   }
 
-  addMuseum(Museum museum) {
-    _fireStoreRef.collection('museums').add(museum.toJson());
+  Future<void> addMuseum(Museum museum) async {
+    await _fireStoreRef.collection('museums').add(museum.toJson());
   }
 }

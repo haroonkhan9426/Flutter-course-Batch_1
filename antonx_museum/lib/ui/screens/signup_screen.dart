@@ -1,17 +1,16 @@
 import 'package:antonx_museum/core/services/auth_service.dart';
 import 'package:antonx_museum/ui/custom_widgets/custom_text_field.dart';
-import 'package:antonx_museum/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   String email;
   String password;
@@ -34,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   /// Login message
                   Text(
-                    'Login to AntonX Museum',
+                    'Sing Up to Use AntonX Museum',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -75,25 +74,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(height: 20),
 
-                  /// Create Account text link
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
-                    },
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(
-                        color: Colors.blueAccent,
-                        decoration: TextDecoration.underline,
-                      ),
+                  /// Forgot password text link
+                  Text(
+                    'SignUp',
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                      decoration: TextDecoration.underline,
                     ),
                   ),
                   Spacer(),
 
-                  /// Login Button
+                  /// Signup Button
                   FlatButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -101,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Text(
-                        'Login',
+                        'SingUp',
                         style: TextStyle(fontSize: 17),
                       ),
                     ),
@@ -110,12 +101,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {
                           showProgress = true;
                         });
-                        final isLoggedIn = await AuthService()
-                            .loginWithEmailAndPassword(email, password);
+                        final isAccountCreated = await AuthService()
+                            .createAccountWithEmail(email, password);
                         setState(() {
                           showProgress = false;
                         });
-                        if (isLoggedIn) {
+                        if (isAccountCreated) {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
@@ -125,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           showDialog(
                             context: context,
                             child: AlertDialog(
-                              title: Text('Login Failed'),
+                              title: Text('Account creation Failed'),
                               content: Text(
                                   'Please check if you have entered correct email and password'),
                             ),

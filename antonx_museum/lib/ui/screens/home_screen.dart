@@ -1,8 +1,10 @@
 import 'package:antonx_museum/core/models/exhibition.dart';
 import 'package:antonx_museum/core/models/museum.dart';
+import 'package:antonx_museum/core/services/auth_service.dart';
 import 'package:antonx_museum/core/services/database_services.dart';
 import 'package:antonx_museum/ui/custom_widgets/exhibition_tile.dart';
 import 'package:antonx_museum/ui/custom_widgets/museum_tile.dart';
+import 'package:antonx_museum/ui/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../custom_widgets/museum_tile.dart';
@@ -95,6 +97,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   SizedBox(height: 20),
+
+                  RaisedButton(
+                    child: Text('Logout'),
+                    onPressed: () async {
+                      await AuthService().logout();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                          (route) => false);
+                    },
+                  ),
 
                   /// Search TextField
                   Container(
