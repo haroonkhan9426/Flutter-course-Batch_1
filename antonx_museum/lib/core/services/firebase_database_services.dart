@@ -2,7 +2,7 @@ import 'package:antonx_museum/core/models/exhibition.dart';
 import 'package:antonx_museum/core/models/museum.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DatabaseService {
+class FirebaseDatabaseService {
   final _fireStoreRef = FirebaseFirestore.instance;
 
   Future<List<Museum>> getMuseums() async {

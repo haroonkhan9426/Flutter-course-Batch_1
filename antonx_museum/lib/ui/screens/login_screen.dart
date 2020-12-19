@@ -4,7 +4,7 @@ import 'package:antonx_museum/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

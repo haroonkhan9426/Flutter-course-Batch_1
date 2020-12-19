@@ -1,5 +1,5 @@
 import 'package:antonx_museum/core/services/auth_service.dart';
-import 'package:antonx_museum/ui/screens/home_screen.dart';
+import 'package:antonx_museum/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';

@@ -3,7 +3,7 @@ import 'package:antonx_museum/ui/custom_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

@@ -1,8 +1,11 @@
 import 'package:antonx_museum/core/models/museum.dart';
-import 'package:antonx_museum/core/services/database_services.dart';
+import 'package:antonx_museum/core/services/custom_database_services.dart';
+import 'package:antonx_museum/core/services/firebase_database_services.dart';
 import 'package:antonx_museum/ui/custom_widgets/custom_text_field.dart';
+import 'package:antonx_museum/ui/screens/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:provider/provider.dart';
 
 class AddMuseumScreen extends StatefulWidget {
   @override
@@ -86,13 +89,15 @@ class _AddMuseumScreenState extends State<AddMuseumScreen> {
                       ),
                     ),
                     onPressed: () async {
-                      setState(() {
-                        showProgressHud = true;
-                      });
-                      await DatabaseService().addMuseum(museum);
-                      setState(() {
-                        showProgressHud = false;
-                      });
+//                      setState(() {
+//                        showProgressHud = true;
+//                      });
+//                      await CustomDatabaseServices().addMuseum(museum);
+                      Provider.of<HomeProvider>(context, listen: false)
+                          .addMuseum(museum);
+//                      setState(() {
+//                        showProgressHud = false;
+//                      });
                       Navigator.pop(context);
                       print('Login Button Pressed');
                     },

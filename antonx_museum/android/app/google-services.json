@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "783186905256",
+    "firebase_url": "https://antonx-museum-default-rtdb.firebaseio.com",
     "project_id": "antonx-museum",
     "storage_bucket": "antonx-museum.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:783186905256:android:d5b9d07f123ecf0aff1a9d",
+        "mobilesdk_app_id": "1:783186905256:android:1b75710e92a99b95ff1a9d",
         "android_client_info": {
-          "package_name": "com.example.antonx_museum"
+          "package_name": "com.antonx.museum"
         }
       },
       "oauth_client": [
